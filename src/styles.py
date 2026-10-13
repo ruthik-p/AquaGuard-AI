@@ -226,33 +226,65 @@ header [data-testid="stToolbar"] {
 }
 
 /* ── Hero section ──────────────────────────────────────────────────────────── */
+
+/* Hero section */
 .aq-hero {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 1.5rem;
     text-align: center;
-    padding: 3rem 1rem 2rem 1rem;
+    box-sizing: border-box;
 }
+
 .aq-hero-title {
-    font-size: 3.2rem;
+    max-width: 780px;
+    margin: 0 auto 0.75rem;
+    font-size: clamp(2rem, 4vw, 3.2rem);
     font-weight: 800;
     background: linear-gradient(135deg, #00d4ff 0%, #0099cc 50%, #00c896 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: 0.5rem;
-    line-height: 1.1;
+    line-height: 1.15;
+    text-align: center;
 }
+
+
 .aq-hero-subtitle {
+    width: 100%;
+    text-align: center;
     font-size: 1.2rem;
     color: #8bafc7;
-    font-weight: 400;
-    margin-bottom: 0;
+    margin: 0 auto 0.75rem;
 }
-.aq-hero-desc {
-    font-size: 1rem;
-    color: #8bafc7;
-    max-width: 640px;
-    margin: 0.75rem auto 1.5rem auto;
-    line-height: 1.7;
+
+
+/* Center the subtitle and description inside the full hero section */
+.aq-hero .aq-hero-subtitle,
+.aq-hero .aq-hero-desc {
+    display: block !important;
+    width: 100% !important;
+    max-width: 680px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
 }
+
+.aq-hero .aq-hero-subtitle {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+.aq-hero .aq-hero-desc {
+    margin-top: 0.75rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+
+
 
 /* ── Feature card for landing ──────────────────────────────────────────────── */
 .aq-feature-card {
@@ -348,23 +380,150 @@ header [data-testid="stToolbar"] {
     margin: 1.5rem 0;
 }
 
-/* ── Animations ────────────────────────────────────────────────────────────── */
+/* ── Premium animations ───────────────────────────────────────────────────── */
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(22px); }
     to   { opacity: 1; transform: translateY(0); }
 }
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to   { opacity: 1; }
 }
+
 @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(0,212,255,0); }
-    50%       { box-shadow: 0 0 16px 4px rgba(0,212,255,0.18); }
+    0%, 100% { box-shadow: 0 0 0 rgba(0,212,255,0); }
+    50% { box-shadow: 0 0 22px rgba(0,212,255,0.20); }
 }
 
-.aq-animate-up  { animation: fadeInUp 0.5s ease forwards; }
-.aq-animate-in  { animation: fadeIn 0.4s ease forwards; }
-.aq-pulse-glow  { animation: pulse-glow 3s ease-in-out infinite; }
+@keyframes water-shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.aq-animate-up {
+    animation: fadeInUp 0.65s ease both;
+}
+
+.aq-animate-in {
+    animation: fadeIn 0.6s ease both;
+}
+
+.aq-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* ── Premium glass cards ──────────────────────────────────────────────────── */
+.aq-card,
+.aq-feature-card,
+.aq-metric {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.aq-card,
+.aq-feature-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.aq-card::before,
+.aq-feature-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00d4ff, #00c896, transparent);
+    background-size: 200% 100%;
+    opacity: 0.65;
+    transition: opacity 0.3s ease;
+}
+
+.aq-card:hover::before,
+.aq-feature-card:hover::before {
+    opacity: 1;
+    animation: water-shimmer 3s linear infinite;
+}
+
+.aq-card:hover,
+.aq-feature-card:hover,
+.aq-metric:hover {
+    border-color: rgba(0,212,255,0.55);
+    box-shadow: 0 12px 35px rgba(0,212,255,0.10);
+}
+
+/* ── Modern section headings ──────────────────────────────────────────────── */
+.aq-section-title {
+    letter-spacing: -0.025em;
+    position: relative;
+}
+
+.aq-section-title::after {
+    content: "";
+    display: block;
+    width: 64px;
+    height: 3px;
+    margin-top: 9px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #00d4ff, #00c896);
+}
+
+/* ── Polished hero title ──────────────────────────────────────────────────── */
+.aq-hero-title {
+    background-size: 200% auto;
+    animation: water-shimmer 7s ease infinite;
+}
+
+/* ── Better buttons ───────────────────────────────────────────────────────── */
+.stButton > button {
+    border-radius: 12px !important;
+    padding: 0.55rem 1.1rem !important;
+    font-weight: 600 !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease,
+                border-color 0.2s ease !important;
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px);
+    border-color: #00d4ff !important;
+}
+
+/* ── Smoother inputs ──────────────────────────────────────────────────────── */
+[data-testid="stTextInput"] input,
+[data-testid="stNumberInput"] input,
+[data-testid="stSelectbox"] div[data-baseweb="select"] {
+    border-radius: 10px !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* ── Refined sidebar ──────────────────────────────────────────────────────── */
+[data-testid="stSidebar"] {
+    box-shadow: 8px 0 30px rgba(0,0,0,0.12);
+}
+
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {
+    line-height: 1.65;
+}
+
+/* ── Accessible motion ────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    .aq-animate-up,
+    .aq-animate-in,
+    .aq-pulse-glow,
+    .aq-hero-title {
+        animation: none !important;
+    }
+
+    .aq-card,
+    .aq-feature-card,
+    .aq-metric,
+    .stButton > button {
+        transition: none !important;
+    }
+}
 
 /* ── Footer ────────────────────────────────────────────────────────────────── */
 .aq-footer {

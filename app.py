@@ -60,26 +60,24 @@ with st.sidebar:
 # ── Disclaimer ─────────────────────────────────────────────────────────────────
 st.markdown(disclaimer_bar(), unsafe_allow_html=True)
 
+
 # ── Hero section ───────────────────────────────────────────────────────────────
-st.markdown(
-    """
-    <div class="aq-hero aq-animate-up">
-        <div style="margin-bottom:1rem;">
-            <span class="aq-badge aq-badge-cyan">SDG 6 — Clean Water &amp; Sanitation</span>
-            &nbsp;
-            <span class="aq-badge aq-badge-green">IBM SkillsBuild · Final Project</span>
-        </div>
-        <h1 class="aq-hero-title">Intelligent Water Quality<br>Monitoring &amp; Safety AI</h1>
-        <p class="aq-hero-subtitle">AquaGuard AI</p>
-        <p class="aq-hero-desc">
-            Machine-learning-powered analysis of nine critical water-quality parameters.
-            Instant risk assessment, WHO guideline checks, and plain-English safety guidance —
-            supporting communities, researchers, and field workers worldwide.
-        </p>
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
+# ── Hero section ──
+st.html("""
+<div style="text-align:center; padding:2rem 1rem;">
+  <div style="margin-bottom:1rem;">
+    <span class="aq-badge aq-badge-cyan">SDG 6 — Clean Water &amp; Sanitation</span>
+    <span class="aq-badge aq-badge-green">IBM SkillsBuild · Final Project</span>
+  </div>
+  <h1>Intelligent Water Quality<br>Monitoring &amp; Safety AI</h1>
+  <p style="font-size:1.3rem; text-align:center;">AquaGuard AI</p>
+  <p style="max-width:680px; margin:0 auto; text-align:center; line-height:1.8;">
+    Machine-learning-powered analysis of nine critical water-quality parameters.
+    Instant risk assessment, WHO guideline checks, and plain-English safety guidance —
+    supporting communities, researchers, and field workers worldwide.
+  </p>
+</div>
+""")
 
 # ── Hero SVG illustration ──────────────────────────────────────────────────────
 col_hero_l, col_hero_c, col_hero_r = st.columns([1, 2, 1])
